@@ -1,0 +1,66 @@
+<html>
+	<head>
+		<title>RUTPass</title>
+		<link rel="shortcut icon" href="../static/LogoRUT.ico" type="image/x-icon">
+	</head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../static/styles/Style_form.css">
+	
+	<body>
+		<div class=mainBlock>
+			<div class=topBlock>
+				<div class="logoPict">
+					<img src="../static/LogoRUT.png" width=150vw height=auto>
+				</div>
+			</div>
+			<div class=textBlock>
+				<p>Форма для выдачи временных пропусков на автомобиль</p>
+			</div>
+			<div class=forms>
+				<p>&nbspФИО:&nbsp</p>
+				<input type="text" id="FCs" name="FCs" required size="116" placeholder="Иванов Иван Иванович" />
+				<p>&nbsp</p>
+			</div>
+			<div class=forms>
+				<p>&nbspНомер телефона:&nbsp</p>
+				<input type="tel" id="phone" name="phone" required size="12" placeholder="+79001002233" />
+				<p>&nbsp</p> <!-- pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" возможна проверка по патерну-->
+			</div>
+			<div class=forms>
+				<p>&nbspМарка автомобиля:&nbsp</p>
+				<input type="text" id="car_brand" name="car_brand" required size="34" placeholder="Mercedes-Benz" />
+				<p>&ensp;</p>
+			</div>
+			<div class=forms>
+				<p>&nbspГос. рег. знак:&nbsp&nbsp</p>
+				<input type="text" id="car_brand" name="car_brand" required size="10" placeholder="A000AA 777" />
+				<p>&nbsp</p>
+			</div>
+			<div class=forms>
+				<p>&nbspДата:&nbsp</p>
+				<input type="date" id="date" name="date" required size="12" />
+				<p>&nbsp</p>
+			</div>
+			<div class=forms>
+				<p>&nbspАдрес структурного подразделения:&nbsp</p>
+				<input type="text" id="address" name="address" required size="63" placeholder="ул. Образцова, д. 9, стр. 9" />
+				<p>&ensp;</p>
+			</div>
+			<div class=forms>
+				<p>&nbspВ связи с (цель заезда):&nbsp</p>
+				<input type="text" id="address" name="address" required size="101" />
+				<p>&nbsp</p>
+			</div>
+			<div>
+				<a>
+					<button class="button_styl r" type="button">Отправить</button>
+				</a>
+				<a href="index">
+					<button class="button_styl l" type="button">Назад</button>
+				</a>
+			</div>
+		</div>
+			
+				
+	</body>
+	</html>

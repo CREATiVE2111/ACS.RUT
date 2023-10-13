@@ -1,0 +1,106 @@
+<html>
+	<head>
+		<title>RUTPass</title>
+		<link rel="shortcut icon" href="../static/LogoRUT.ico" type="image/x-icon">
+	</head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../static/styles/Style_form.css">
+	
+	<body>
+		<div class=mainBlock>
+			<div class="logoPict">
+				<img src="../static/LogoRUT.png" width=150vw height=auto>
+			</div>
+				<div class=topBlock></div>
+				<div class=textBlock>
+					<p>Форма для выдачи временных пропусков для человека</p>
+				</div>
+			<form action="/process_form" method="POST">
+				<div class=forms>
+					<p>&nbspФИО:&nbsp</p>
+					<input 	type="text" 
+							id="FCs" 
+							name="FCs" 
+							required 
+							size="50" 
+							placeholder="Иванов Иван Иванович" />
+					
+					<p>&nbsp</p>
+				</div>
+				
+				
+				
+				<div class=forms>
+					<p>&nbspДата выдачи:&nbsp</p>
+					<input 	type="date" 
+							id="dateS" 
+							name="dateS" 
+							required />
+					<p>&emsp;Действителен до:&nbsp;</p>
+					<input 	type="date" 
+							id="dateE" 
+							name="dateE" 
+							required />
+					<p>&nbsp</p>
+				</div>
+				<div class=forms>
+					<p>&nbspСерия, номер паспорта:&nbsp</p>
+					<input 	type="text" 
+							id="passport" 
+							name="passport" 
+							required 
+							size="10" 
+							placeholder="12 34 567890" />
+					<p>&nbsp</p> <!-- pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" возможна проверка по патерну-->
+				</div>
+				<div class=forms>
+					<p>&nbspАдрес структурного подразделения:&nbsp</p>
+					<input 	type="text" 
+							id="address" 
+							name="address" 
+							required 
+							size="49" 
+							placeholder="ул. Образцова, д. 9, стр. 9" />
+					<p>&ensp;</p>
+				</div>
+				<div class=forms>
+					<p>&nbspГражданство:&nbsp</p>
+					<input 	type="text"
+							id="citizenship" 
+							name="citizenship" 
+							required size="35" 
+							placeholder="Российская Федерация" />
+					<p>&ensp;</p>
+				</div>
+				<div class=forms>
+					<p>&nbspДолжность:&nbsp</p>
+					<input 	type="text" 
+							id="post" 
+							name="post" 
+							required 
+							size="53" 
+							placeholder="Заместитель генерального директора РЖД" />
+					<p>&ensp;</p>
+				</div>
+				<div class=forms>
+					<p>&nbspВ связи с (цель заезда):&nbsp</p>
+					<input 	type="text" 
+							id="purpose" 
+							name="purpose" 
+							required size="101" />
+					<p>&nbsp</p>
+				</div>
+			
+			<div>
+				<!-- <button class="button_styl r" type="submit">Отправить</button> -->
+				<input class="button_styl r" type="submit" value="Отправить">
+			</form>
+				<a href="index">
+					<button class="button_styl l" type="button">Назад</button>
+				</a>
+			</div>
+		</div>
+			
+				
+	</body>
+	</html>
