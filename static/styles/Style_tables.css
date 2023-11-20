@@ -62,13 +62,13 @@ a{
 	color: #000;
 	text-shadow: 0.5px 0.5px 0.5px #000;
 	border-radius: 50px;
-	background-color: #BF9000;
+	background-color: #E6AF00;
 	white-space: normal;
 
 }
 .button_styl:hover {
-	background-color: #E6AF00;
-	color: #000;
+	background-color: #0072CE;
+	color: #fff;
 	text-shadow: 1px 1px 1px #000;
 }
 .button_styl:active {

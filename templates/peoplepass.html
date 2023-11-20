@@ -9,98 +9,184 @@
 	<body>
 		<div class=mainBlock>
 			<div class="logoPict">
-				<img src="../static/LogoRUT.png" width=150vw height=auto>
+				<img src="../static/LogoRUT.png" width=300vw height=auto>
 			</div>
-				<div class=topBlock></div>
-				<div class=textBlock>
-					<p>Форма для выдачи временных пропусков для человека</p>
-				</div>
-			<form action="/process_form" method="POST">
-				<div class=forms>
-					<p>&nbspФИО:&nbsp</p>
-					<input 	type="text" 
-							id="FCs" 
-							name="FCs" 
-							required 
-							size="50" 
-							placeholder="Иванов Иван Иванович" />
+			<div class=topBlock></div>
+			<div class=textBlock>
+				<p>Форма для выдачи временных пропусков</p>
+			</div>
+			<form action="/process_form_people" method="POST">
+				<div class=formBlock>
+					<div class=leftBlock>
+						<div class="forms">
+							<label for="FCs">ФИО:</label>
+							<input 	type="text" 
+									id="FCs" 
+									name="FCs" 
+									required
+									size="27"
+									placeholder="Иванов Иван Иванович" />
+						</div>
+						<div class="forms">
+							<label for="dateS">Действителен c:</label>
+							<input 	type="date" 
+									id="dateS" 
+									name="dateS" 
+									required />
+						</div>
+						<div class="forms">
+							<label for="dateE">Действителен до:</label>
+							<input 	type="date" 
+									id="dateE" 
+									name="dateE" 
+									required />
+						</div>
+						<div class="forms">
+							<label for="passport">Серия, номер паспорта:</label>
+							<input 	type="text" 
+									id="passport" 
+									name="passport" 
+									required
+									size="12"
+									placeholder="1234 567890"
+									minlength="11" 
+									maxlength="11"/>
+						</div>
+						<div class="forms">
+							<label for="citizenship">Гражданство:</label>
+							<input	id="citizenship" 
+									name="citizenship"
+									list="citizenshiplist"
+									required
+									placeholder="Гражданство России" />
+							<datalist id="citizenshiplist">
+								<option>Гражданство Австралии</option>
+								<option>Гражданство Австрии</option>
+								<option>Гражданство Азербайджана</option>
+								<option>Гражданство Армении</option>
+								<option>Гражданство Болгарии</option>
+								<option>Гражданство Великобритании</option>
+								<option>Гражданство Венгрии</option>
+								<option>Гражданство ГДР</option>
+								<option>Гражданство Германии</option>
+								<option>Гражданство Гренады</option>
+								<option>Гражданство Грузии</option>
+								<option>Гражданство Европейского союза</option>
+								<option>Гражданство Израиля</option>
+								<option>Гражданство Италии</option>
+								<option>Гражданство Канады</option>
+								<option>Гражданство Катара</option>
+								<option>Гражданство Кипра</option>
+								<option>Гражданство Китая</option>
+								<option>Гражданство Кубы</option>
+								<option>Гражданство Латвии</option>
+								<option>Гражданство Либерии</option>
+								<option>Гражданство Литвы</option>
+								<option>Гражданство Мальты</option>
+								<option>Гражданство Молдавии</option>
+								<option>Гражданство России</option>
+								<option>Гражданство Словении</option>
+								<option>Гражданство Содружества</option>
+								<option>Гражданство СССР</option>
+								<option>Гражданство Турецкой Республики Северного Кипра</option>
+								<option>Гражданство Туркменистана</option>
+								<option>Гражданство Украины</option>
+								<option>Гражданство Франции</option>
+								<option>Гражданство Хорватии</option>
+								<option>Гражданство Черногории</option>
+								<option>Гражданство Эстонии</option>
+								<option>Гражданство Японии</option>
+							</datalist>
+						</div>						
+						<div class="forms">
+							<label for="post">Должность:</label>
+							<input 	type="text" 
+									id="post" 
+									name="post" 
+									required
+									size="33"
+									placeholder="Заместитель генерального директора РЖД" />
+						</div>
+						<div class="forms">
+							<label for="address">Адрес структурного подразделения:</label>
+							<input 	type="text" 
+									id="address" 
+									name="address" 
+									required
+									placeholder="ул. Образцова, д. 9, стр. 9" />
+						</div>
+					</div>
 					
-					<p>&nbsp</p>
+					<div class=rightBlock>
+						<div class="forms forms_ta">
+							<label for="purpose">В связи с (цель):</label>
+							<textarea 
+									id="purpose"
+									name="purpose">
+									</textarea>
+						</div>
+						<div class="forms">
+							<label for="uFCs">Ваше ФИО:</label>
+							<input 	type="text" 
+									id="uFCs"
+									name="uFCs" 
+									required
+									size="27"
+									placeholder="Иванов Иван Иванович" />
+						</div>
+						<div class="forms">
+							<label for="uphone">Ваш номер телефона:</label>
+							<input 	type="text" 
+									id="uphone" 
+									name="uphone" 
+									required
+									size="12"
+									placeholder="+79001002233"
+									minlength="11" 
+									maxlength="12"/>
+							<span class="validity"></span>
+						</div>
+						<div class="forms">
+							<label for="umail">Ваша почта:</label>
+							<input 	type="text" 
+									id="umail"
+									name="umail" 
+									required
+									placeholder="example@mail.ru"/>
+						</div>
+						<div class="forms">
+							<label for="uinstitute">Институт:</label>
+							<input 	type="text" 
+									id="uinstitute"
+									name="uinstitute" 
+									required
+									list="institutelist"
+									placeholder='Академия "Высшая инженерная школа" (АВИШ)'/>
+							<datalist id="institutelist">
+								<option>Академия базовой подготовки (АБП)</option>
+								<option>Академия водного транспорта (АВТ)</option>
+								<option>Академия "Высшая инженерная школа" (АВИШ)</option>
+								<option>Академия гражданской авиации (АГА)</option>
+								<option>Академия дорожного хозяйства (АДХ)</option>
+								<option>Академиmя интеллектуальных транспортных систем в автомобильно-дорожном комплексе (АИТСвАДК)</option>
+								<option>Институт международных транспортных коммуникаций (ИМТК)</option>
+								<option>Институт пути (строительства и сооружений)</option>
+								<option>Институт транспортной техники и систем управления (ИТТСУ)</option>
+								<option>Институт управления и цифровых технологий (ИУЦТ)</option>
+								<option>Институт экономики и финансов (ИЭФ)</option>
+								<option>Российская академия путей сообщения (РАПС)</option>
+								<option>Российская открытая академия транспорта (РОАТ)</option>
+								<option>Юридический институт (ЮИ)</option>
+							</datalist>
+						</div>
+					</div>
+					
+					<div class=bottomBlock>
+						<input class="button_styl r" type="submit" value="Отправить">
+						<a href="index"><button class="button_styl l" type="button">Назад</button></a>
+					</div>
 				</div>
-				
-				
-				
-				<div class=forms>
-					<p>&nbspДата выдачи:&nbsp</p>
-					<input 	type="date" 
-							id="dateS" 
-							name="dateS" 
-							required />
-					<p>&emsp;Действителен до:&nbsp;</p>
-					<input 	type="date" 
-							id="dateE" 
-							name="dateE" 
-							required />
-					<p>&nbsp</p>
-				</div>
-				<div class=forms>
-					<p>&nbspСерия, номер паспорта:&nbsp</p>
-					<input 	type="text" 
-							id="passport" 
-							name="passport" 
-							required 
-							size="10" 
-							placeholder="12 34 567890" />
-					<p>&nbsp</p> <!-- pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" возможна проверка по патерну-->
-				</div>
-				<div class=forms>
-					<p>&nbspАдрес структурного подразделения:&nbsp</p>
-					<input 	type="text" 
-							id="address" 
-							name="address" 
-							required 
-							size="49" 
-							placeholder="ул. Образцова, д. 9, стр. 9" />
-					<p>&ensp;</p>
-				</div>
-				<div class=forms>
-					<p>&nbspГражданство:&nbsp</p>
-					<input 	type="text"
-							id="citizenship" 
-							name="citizenship" 
-							required size="35" 
-							placeholder="Российская Федерация" />
-					<p>&ensp;</p>
-				</div>
-				<div class=forms>
-					<p>&nbspДолжность:&nbsp</p>
-					<input 	type="text" 
-							id="post" 
-							name="post" 
-							required 
-							size="53" 
-							placeholder="Заместитель генерального директора РЖД" />
-					<p>&ensp;</p>
-				</div>
-				<div class=forms>
-					<p>&nbspВ связи с (цель заезда):&nbsp</p>
-					<input 	type="text" 
-							id="purpose" 
-							name="purpose" 
-							required size="101" />
-					<p>&nbsp</p>
-				</div>
-			
-			<div>
-				<!-- <button class="button_styl r" type="submit">Отправить</button> -->
-				<input class="button_styl r" type="submit" value="Отправить">
 			</form>
-				<a href="index">
-					<button class="button_styl l" type="button">Назад</button>
-				</a>
-			</div>
 		</div>
-			
-				
 	</body>
-	</html>
+</html>

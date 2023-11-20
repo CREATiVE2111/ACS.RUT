@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<title>RUTPass</title>
+		<link rel="shortcut icon" href="../static/LogoRUT.ico" type="image/x-icon">
+	</head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../static/styles/Style_table.css">
+	
+	<body>
+		<div class=topBlock>
+			<a href="cdata">
+				<button class="button_styl r" type="button">Пропуска на авто</button>
+			</a>
+			<div class="logoPict">
+				<img src="../static/LogoRUT.png">
+			</div>
+			
+		</div>
+		
+		<div class=textBlock>
+			<p>База временных пеших пропусков</p>
+		</div>
+		<div class=search>
+			<form action="/process_form_people_search" method="POST">
+			<div class="forms">
+			<!-- <a href="index"><button class="button_search" type="button">↩️</button></a> -->
+				<label for="search">Поиск по имени:</label>
+				<input 	type="text" 
+						id="search" 
+						name="search"
+						required
+						placeholder="Иванов Иван Иванович" />
+				<input class="button_search" type="submit" value="&#128269">
+				</form>
+			</div>
+		</div>
+		
+		<div class=tableBlock>
+			<table>
+				<thead>
+					<tr>
+						<th>ФИО</th>
+						<th>Действует с</th>
+						<th>Действует по</th>
+						<th>Серия и номер паспорта</th>
+						<th>Адрес</th>
+						<th>Гражданство</th>
+						<th>Должность</th>
+						<th>Имя заявителя</th>
+						<th>Номер телефона заявителя</th>
+						<th>Почта заявителя</th>
+						<th>Институт</th>
+						<th>Заявление</th>
+						<th>Статус</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for row in data %}
+						<tr>
+							<td			  >{{ row[1] }}</td>
+							<td width="6%">{{ row[2] }}</td>
+							<td width="6%">{{ row[3] }}</td>
+							<td width="5%">{{ row[4] }}</td>
+							<td			  >{{ row[5] }}</td>
+							<td width="9%">{{ row[6] }}</td>
+							<td			  >{{ row[7] }}</td>
+							<td 		  >{{ row[9] }}</td>
+							<td	width="7%">{{ row[10] }}</td>
+							<td			  >{{ row[11] }}</td>
+							<td			  >{{ row[12] }}</td>
+							<td width="6%">
+								<a href="{{ url_for('download_word_fileP', file_id=row[14]) }}">⬇️</a>
+								<a href="">⬆️</a>
+							</td>
+							<td			  >{{ row[13] }}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	
+	</body>
+</html>
