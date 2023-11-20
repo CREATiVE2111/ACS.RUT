@@ -1,0 +1,149 @@
+<html>
+	<head>
+		<title>RUTPass</title>
+		<link rel="shortcut icon" href="../static/LogoRUT.ico" type="image/x-icon">
+	</head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../static/styles/Style_form.css">
+	
+	<body>
+		<div class=mainBlock>
+			<div class=topBlock>
+				<div class="logoPict">
+					<img src="../static/LogoRUT.png">
+				</div>
+			</div>
+			<div class=textBlock>
+				<p>Форма для выдачи временных пропусков на автомобиль</p>
+			</div>
+			<form action="/process_form_car" method="POST">
+				<div class=formBlock>
+					<div class=leftBlock>
+						<div class=forms>
+							<label for="FCs">ФИО:</label>
+							<input 	type="text" 
+									id="FCs" 
+									name="FCs" 
+									required
+									size="27"
+									placeholder="Иванов Иван Иванович" />
+						</div>
+						<div class=forms>
+							<label for="date">Дата:</label>
+							<input 	type="date" 
+									id="date" 
+									name="date" 
+									required size="12" />
+						</div>
+						<div class=forms>
+							<label for="car_brand">Марка автомобиля:</label>
+							<input 	type="text" 
+									id="car_brand" 
+									name="car_brand" 
+									required 
+									placeholder="Mercedes-Benz" />
+						</div>
+						<div class=forms>
+							<label for="SRM">Гос. рег. знак:</label>
+							<input 	type="text" 
+									id="SRM" 
+									name="SRM" 
+									required
+									size="10"
+									placeholder="A000AA 777" 
+									minlength="9" 
+									maxlength="10" />
+						</div>
+						<div class=forms>
+							<label for="address">Адрес структурного подразделения:</label>
+							<input 	type="text" 	
+									id="address" 
+									name="address" 
+									required
+									placeholder="ул. Образцова, д. 9, стр. 9" />
+						</div>
+						<div class=forms>
+							<label for="phone">Номер телефона:</label>
+							<input 	type="text" 
+									id="phone" 
+									name="phone" 
+									required
+									size="12"
+									placeholder="+79001002233"
+									minlength="11" 
+									maxlength="12" />
+							<span class="validity"></span>
+						</div>
+					</div>
+					<div class=rightBlock>
+						<div class="forms forms_ta">
+							<label for="purpose">В связи с (цель):</label>
+							<textarea 
+									id="purpose"
+									name="purpose">
+									</textarea>
+						</div>
+						<div class="forms">
+							<label for="uFCs">Ваше ФИО:</label>
+							<input 	type="text" 
+									id="uFCs"
+									name="uFCs" 
+									required
+									size="27"
+									placeholder="Иванов Иван Иванович" />
+						</div>
+						<div class="forms">
+							<label for="uphone">Ваш номер телефона:</label>
+							<input 	type="text" 
+									id="uphone" 
+									name="uphone" 
+									required
+									size="12"
+									placeholder="+79001002233"
+									minlength="11" 
+									maxlength="12"/>
+							<span class="validity"></span>
+						</div>
+						<div class="forms">
+							<label for="umail">Ваша почта:</label>
+							<input 	type="text" 
+									id="umail"
+									name="umail" 
+									required
+									placeholder="example@mail.ru"/>
+						</div>
+						<div class="forms">
+							<label for="uinstitute">Институт:</label>
+							<input 	type="text" 
+									id="uinstitute"
+									name="uinstitute" 
+									required
+									list="institutelist"
+									placeholder='Академия "Высшая инженерная школа" (АВИШ)'/>
+							<datalist id="institutelist">
+								<option>Академия базовой подготовки (АБП)</option>
+								<option>Академия водного транспорта (АВТ)</option>
+								<option>Академия "Высшая инженерная школа" (АВИШ)</option>
+								<option>Академия гражданской авиации (АГА)</option>
+								<option>Академия дорожного хозяйства (АДХ)</option>
+								<option>Академиmя интеллектуальных транспортных систем в автомобильно-дорожном комплексе (АИТСвАДК)</option>
+								<option>Институт международных транспортных коммуникаций (ИМТК)</option>
+								<option>Институт пути (строительства и сооружений)</option>
+								<option>Институт транспортной техники и систем управления (ИТТСУ)</option>
+								<option>Институт управления и цифровых технологий (ИУЦТ)</option>
+								<option>Институт экономики и финансов (ИЭФ)</option>
+								<option>Российская академия путей сообщения (РАПС)</option>
+								<option>Российская открытая академия транспорта (РОАТ)</option>
+								<option>Юридический институт (ЮИ)</option>
+							</datalist>
+						</div>
+					</div>
+					<div class=bottomBlock>
+						<input class="button_styl r" type="submit" value="Отправить">
+						<a href="index"><button class="button_styl l" type="button">Назад</button></a>
+					</div>
+				</div>
+			</form>
+		</div>	
+	</body>
+</html>

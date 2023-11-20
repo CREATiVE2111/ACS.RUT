@@ -63,7 +63,6 @@ input{
 	background-color: #1B365D;
 	font-size: 1.5vw;
 	color: #fff;
-	width: 34vw;
 }
 input:focus{
 	outline: none;
@@ -76,6 +75,9 @@ label {
 	margin-top: -0.2vh;
 	margin-left: 0px;
 	margin-right: 5px;
+}
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
 }
 .tableBlock{
 	display: flex;

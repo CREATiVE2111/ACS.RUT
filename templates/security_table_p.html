@@ -14,22 +14,40 @@
 			<div class="logoPict">
 				<img src="../static/LogoRUT.png">
 			</div>
-			
 		</div>
 		
 		<div class=textBlock>
 			<p>База временных пеших пропусков</p>
 		</div>
 		<div class=search>
-			<form action="/process_form_people_search" method="POST">
+			<form action="/process_form_people_search_fcs" method="POST">
 			<div class="forms">
 			<!-- <a href="index"><button class="button_search" type="button">↩️</button></a> -->
 				<label for="search">Поиск по имени:</label>
 				<input 	type="text" 
 						id="search" 
 						name="search"
+						size=40
 						required
 						placeholder="Иванов Иван Иванович" />
+				<input class="button_search" type="submit" value="&#128269">
+				</form>
+			</div>
+		</div>
+		<div class=search>
+			<form action="/process_form_people_search_date" method="POST">
+			<div class="forms">
+			<!-- <a href="index"><button class="button_search" type="button">↩️</button></a> -->
+				<label for="dateS">&emsp;&emsp;Фильтр по дате с:</label>
+				<input 	type="date" 
+						id="dateS" 
+						name="dateS" 
+						required />
+				<label for="dateE">&nbsp;по:</label>
+				<input 	type="date" 
+						id="dateE" 
+						name="dateE" 
+						required />
 				<input class="button_search" type="submit" value="&#128269">
 				</form>
 			</div>
@@ -58,8 +76,8 @@
 					{% for row in data %}
 						<tr>
 							<td			  >{{ row[1] }}</td>
-							<td width="6%">{{ row[2] }}</td>
-							<td width="6%">{{ row[3] }}</td>
+							<td width="6%">{{ row[2].strftime('%d.%m.%Y') }}</td>
+							<td width="6%">{{ row[3].strftime('%d.%m.%Y') }}</td>
 							<td width="5%">{{ row[4] }}</td>
 							<td			  >{{ row[5] }}</td>
 							<td width="9%">{{ row[6] }}</td>

@@ -16,7 +16,7 @@ def word_pep_gen(input_values_people, count):
     doc.save(f"reqp{count}.docx")
 
 def word_car_gen(input_values_people, count):
-    fcs, phone, car_brand, SRM, date, addres, purpose, mail, ufcs, = input_values_people
+    fcs, phone, car_brand, SRM, date, addres, purpose, ufcs, uphone, umail, uinstitute = input_values_people
     doc = DocxTemplate("Шаблон_авто.docx")
     context = { "фио": fcs,
                 "дата": date,

@@ -15,8 +15,8 @@ cursor = conn.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS people
                     (id INT GENERATED ALWAYS AS IDENTITY,
                     FCs TEXT NOT NULL,
-                    dateS TEXT NOT NULL,
-                    dateE TEXT NOT NULL,
+                    dateS DATE NOT NULL,
+                    dateE DATE NOT NULL,
                     passport TEXT NOT NULL,
                     address TEXT NOT NULL,
                     citizenship TEXT NOT NULL,
@@ -51,9 +51,9 @@ conn.commit()
 def index():
     return render_template('index.html')
 
-@app.route('/autopass')
-def autopass():
-    return render_template('autopass.html')
+@app.route('/carpass')
+def carpass():
+    return render_template('carpass.html')
 
 @app.route('/peoplepass')
 def peoplepass():
@@ -63,8 +63,8 @@ def peoplepass():
 def process_form_people():
     input_values_people = []
     input_values_people.append(request.form['FCs'])
-    input_values_people.append('.'.join(request.form['dateS'].split("-")[::-1]))
-    input_values_people.append('.'.join(request.form['dateE'].split("-")[::-1]))
+    input_values_people.append(request.form['dateS'])
+    input_values_people.append(request.form['dateE'])
     input_values_people.append(request.form['passport'])
     input_values_people.append(request.form['address'])
     input_values_people.append(request.form['citizenship'])
@@ -86,7 +86,7 @@ def process_form_people():
 def process_form_car():
     input_values_car = []
     input_values_car.append(request.form['FCs'])
-    input_values_car.append('.'.join(request.form['date'].split("-")[::-1]))
+    input_values_car.append(request.form['date'])
     input_values_car.append(request.form['car_brand'])
     input_values_car.append(request.form['SRM'])
     input_values_car.append(request.form['address'])
@@ -108,16 +108,26 @@ def pdata():
     data = get_data("people")
     return render_template('security_table_p.html', data=data)
 
-@app.route('/process_form_people_search', methods=['POST'])
-def process_form_people_search():
+@app.route('/process_form_people_search_fcs', methods=['POST'])
+def process_form_people_search_fcs():
     ifcs = request.form['search']
-    print(ifcs)
     cursor.execute(f"SELECT * FROM people WHERE fcs = '{ifcs}' ORDER BY id DESC;")
     data = cursor.fetchall()
     conn.commit()
     return render_template('security_table_p.html', data=data)
 
-    return 'Данные приняты. Значение поля ввода: {}'.format(input_values_people)
+@app.route('/process_form_people_search_date', methods=['POST'])
+def process_form_people_search_date():
+    dateS = request.form['dateS']
+    dateE = request.form['dateE']
+    cursor.execute(f"SELECT * FROM people\
+                    WHERE dates BETWEEN '{dateS}' AND '{dateE}'\
+                    OR datee BETWEEN '{dateS}' AND '{dateE}'\
+                    OR dates <= '{dateS}' AND datee >= '{dateE}'\
+                    ORDER BY id DESC;")
+    data = cursor.fetchall()
+    conn.commit()
+    return render_template('security_table_p.html', data=data)
 
 @app.route('/cdata')
 def cdata():
@@ -176,12 +186,12 @@ def sqlp(input_values_people, file_path):
     finally:
         conn.commit()
 
-def sqlc(input_values_people, file_path, table_name):
+def sqlc(input_values_people, file_path):
     status = "unknown"
     try:
         cursor.execute(
             f"INSERT INTO car (FCs, date, car_brand, SRM, address, phone, purpose, uFCs, uphone, umail,\
-            uinstitute, status, file) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+            uinstitute, status, file) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
             (input_values_people[0], input_values_people[1], input_values_people[2], input_values_people[3],
              input_values_people[4], input_values_people[5], input_values_people[6], input_values_people[7],
              input_values_people[8], input_values_people[9], input_values_people[10], status, file_path)
@@ -201,15 +211,10 @@ def get_data(table_name):
     return data
 
 def get_count(table_name):
-    cursor.execute(f'SELECT COUNT(*) FROM {table_name} ORDER BY id DESC;')
+    cursor.execute(f'SELECT COUNT(*) FROM {table_name};')
     count = (cursor.fetchall())[0][0]
     conn.commit()
     return count
-
-# @app.route('/pdatas')
-# def pdatas():
-#     data = get_data_search("people")
-#     return render_template('security_table_p.html', data=data)
 
 
 if __name__ == '__main__':
